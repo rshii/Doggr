@@ -1,3 +1,3 @@
 class SubBreed < ApplicationRecord
-  belongs_to :breed, :counter_cache => true
+  belongs_to :breed, counter_cache: true
 end
