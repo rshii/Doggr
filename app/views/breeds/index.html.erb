@@ -1,5 +1,4 @@
-<%= form_tag("/breeds", method: "post") do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
+<% @breeds.take(100).each do |breed| %>
+<% url=JSON.parse(HTTParty.get("https://dog.ceo/api/breed/"+breed.breed_name+"/images/random").body)["message"]  %>
+<img src=<%= url %>>
 <% end %>
