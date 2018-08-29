@@ -2,7 +2,6 @@ class CreateBreeds < ActiveRecord::Migration[5.2]
   def change
     create_table :breeds do |t|
       t.string :breed_name
-      t.string :breed_url
       t.integer :sub_breeds_count, default: 0, null:false
 
       t.timestamps

@@ -1,15 +1,8 @@
-<div class="row">
-<% @breeds.each do |breed| %>
-<% url=JSON.parse(HTTParty.get("https://dog.ceo/api/breed/"+breed.breed_name+"/images/random").body)["message"]  %>
-  <div class="col-sm-4">
-    <div class="card">
-        <img class="card-img-top" src=<%= url %>>
-        <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+<div class="container">
+  <div class="row justify-content-center">
+  <%= render @breeds %>
   </div>
-<% end %>
 </div>
+
+
+<%= will_paginate @posts, :class => 'flickr_pagination' %>

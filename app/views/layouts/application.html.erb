@@ -8,20 +8,27 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header>
+  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <%= link_to 'Doggr', root_path, class: 'navbar-brand col-sm-3 col-md-2 mr-0' %>
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <% if signed_in? %>
+            <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'nav-link' %>
+          <% else %>
+            <%= link_to 'Sign in', sign_in_path, class: 'nav-link' %>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </header>
   <body>
-  <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
-
-    <div id="flash">
+    <%= yield %>
+      <div id="flash">
       <% flash.each do |key, value| %>
         <div class="flash <%= key %>"><%= value %></div>
       <% end %>
     </div>
-    <%= yield %>
   </body>
 </html>

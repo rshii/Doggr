@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2018_08_28_184246) do
 
   create_table "breeds", force: :cascade do |t|
     t.string "breed_name"
-    t.string "breed_url"
     t.integer "sub_breeds_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

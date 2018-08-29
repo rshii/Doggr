@@ -1,6 +1,6 @@
 class BreedsController < ApplicationController
     def index
-        @breeds = Breed.all
+        @breeds = Breed.paginate(:page => params[:page], :per_page => 9)
     end
     def seed
         if Breed.first.nil?
@@ -19,5 +19,6 @@ class BreedsController < ApplicationController
         redirect_to breeds_url
     end
     def show
+        @breed = Breed.find(params[:id])
     end
 end
