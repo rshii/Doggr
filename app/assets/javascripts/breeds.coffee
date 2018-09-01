@@ -10,3 +10,6 @@
     getImg = (url) ->
         element.src = url
     getResponse()
+
+@asd = ->
+    alert "qowie"
