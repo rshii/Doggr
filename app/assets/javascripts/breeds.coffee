@@ -13,10 +13,10 @@
 @toggleHeart = (element, userID, breedID) ->
     element.classList.toggle("heart-icon-fav")
     element.classList.toggle("heart-icon")
-    # $.post 'http://167.99.181.246/breeds/toggleFavorite',
-    #     user_id: userID
-    #     breed_id: breedID
-    #     (data) -> alert "asdads"
+    $.post 'http://167.99.181.246/breeds#toggleFavorite',
+        user_id: userID
+        breed_id: breedID
+        (data) -> console.log("Status ok")
 
 @alertHeart = ->
     alert "Sign in to heart your favorite breeds!"

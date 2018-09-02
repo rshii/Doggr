@@ -1,4 +1,6 @@
 class BreedsController < ApplicationController
+    protect_from_forgery prepend: true
+
     def index
         @breeds = Breed.paginate(:page => params[:page], :per_page => 9)
     end
@@ -22,6 +24,13 @@ class BreedsController < ApplicationController
         @breed = Breed.find(params[:id])
     end
     def toggleFavorite
+        user = User.find(params[:user_id])
+        breed = Breed.find(params[:breed_id])
+        if user.breeds.exists?(id: breed.id)
+            user.breeds.destroy(breed)
+        else
+            user.breeds.push(breed)
+        end
         respond_to do |format|
             format.html
         end
