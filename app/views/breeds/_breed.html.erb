@@ -4,8 +4,17 @@
     <div class="card-body">
     <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
         <%= button_to breed.breed_name.capitalize, breed, class: 'btn btn-info'  %>
-        <%= octicon "heart", :class => "heart-icon", :height => 32, :"aria-label" => "heart", :onclick=>"asd()" %>
-        </div>
+        <% heart_class = "heart-icon" %>
+        <% if signed_in? %>
+            <% if current_user.breeds.exists?(id: breed.id) %>
+                <% heart_class = "heart-icon-fav" %>
+            <% end %>
+            <% heart_on_click =  "toggleHeart(this, #{current_user.id}, #{breed.id})"%>
+        <% else %>
+            <% heart_on_click = "alertHeart()" %>
+        <% end %>
+        <%= octicon "heart", :height => 32, :"aria-label" => "heart", :class => heart_class, :onclick => heart_on_click %>
+    </div>
     </div>
   </div>
   </div>

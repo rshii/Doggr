@@ -41,9 +41,24 @@ object-fit: cover;
 }
 
 .heart-icon {
-  fill: #ff4c4c;
+  fill: white;
+  background-color: #ff4c4c;
+  border-radius: 0.25rem;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .heart-icon:hover {
- fill:black;
+ background-color:red;
 }
+
+.heart-icon-fav {
+  fill: #ff4c4c;
+  background-color: white;
+}
+
+.heart-icon-fav:hover {
+  fill: red;
+  background-color: white;
+}
+

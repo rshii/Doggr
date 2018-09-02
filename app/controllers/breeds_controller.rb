@@ -21,4 +21,9 @@ class BreedsController < ApplicationController
     def show
         @breed = Breed.find(params[:id])
     end
+    def toggleFavorite
+        respond_to do |format|
+            format.html
+        end
+    end
 end

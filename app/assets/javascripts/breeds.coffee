@@ -6,10 +6,17 @@
         $.getJSON("https://dog.ceo/api/breed/"+breed_name+"/images/random")
         .done (response) ->
             getImg(response["message"])
-    
     getImg = (url) ->
         element.src = url
     getResponse()
 
-@asd = ->
-    alert "qowie"
+@toggleHeart = (element, userID, breedID) ->
+    element.classList.toggle("heart-icon-fav")
+    element.classList.toggle("heart-icon")
+    # $.post 'http://167.99.181.246/breeds/toggleFavorite',
+    #     user_id: userID
+    #     breed_id: breedID
+    #     (data) -> alert "asdads"
+
+@alertHeart = ->
+    alert "Sign in to heart your favorite breeds!"
