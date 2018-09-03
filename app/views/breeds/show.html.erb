@@ -1,0 +1,9 @@
+<div class="container">
+<h1> <%= @breed.breed_name.capitalize %> </h1>
+  <div class="row justify-content-center">
+    <% for i in 1..9 %>
+        <%= render "show", locals: {breed: @breed} %>
+    <% end %>
+  </div>
+  <h2> <%= link_to 'Back', :back %> </h2>
+</div>

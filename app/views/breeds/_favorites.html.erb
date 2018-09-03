@@ -1,0 +1,20 @@
+<div class="col-xs-12 col-md-12 col-lg-4">
+<div class="card border border-primary">
+    <img class="card-img-top" src onerror="getBreedImg(this,'<%= favorite.breed_name %>')" alt="Card image cap">
+    <div class="card-body">
+    <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+        <%= link_to favorite.breed_name.capitalize, favorite, class: 'btn btn-info'  %>
+        <% heart_class = "heart-icon" %>
+        <% if signed_in? %>
+            <% if current_user.breeds.exists?(id: favorite.id) %>
+                <% heart_class = "heart-icon-fav" %>
+            <% end %>
+            <% heart_on_click =  "toggleHeart(this, #{current_user.id}, #{favorite.id})"%>
+        <% else %>
+            <% heart_on_click = "alertHeart()" %>
+        <% end %>
+        <%= octicon "heart", :height => 32, :"aria-label" => "heart", :class => heart_class, :onclick => heart_on_click %>
+    </div>
+    </div>
+  </div>
+  </div>

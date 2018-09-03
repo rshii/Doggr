@@ -62,3 +62,16 @@ object-fit: cover;
   background-color: white;
 }
 
+.heart-button {
+  background-color:transparent;
+  color:transparent;
+  outline:none;
+  text-decoration: none;
+  cursor: pointer;
+  border:none;
+  
+}
+
+.heart-button:focus {
+  outline:0;
+}
