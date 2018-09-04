@@ -13,7 +13,7 @@
         <% else %>
             <% heart_on_click = "alertHeart()" %>
         <% end %>
-        <%= button_to "breeds#toggleFavorite", params: { breed_id: breed.id }, remote: true, :class => "heart-button"  do %>
+        <%= button_to "favorites#toggleFavorite", params: { breed_id: breed.id }, remote: true, :class => "heart-button"  do %>
             <% octicon "heart", :height => 32, :"aria-label" => "heart", :class => heart_class, :onclick => heart_on_click %>
         <% end %>
     </div>

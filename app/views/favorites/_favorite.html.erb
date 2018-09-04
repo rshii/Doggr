@@ -5,15 +5,12 @@
     <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
         <%= link_to favorite.breed_name.capitalize, favorite, class: 'btn btn-info'  %>
         <% heart_class = "heart-icon" %>
-        <% if signed_in? %>
-            <% if current_user.breeds.exists?(id: favorite.id) %>
-                <% heart_class = "heart-icon-fav" %>
-            <% end %>
-            <% heart_on_click =  "toggleHeart(this, #{current_user.id}, #{favorite.id})"%>
-        <% else %>
-            <% heart_on_click = "alertHeart()" %>
+        <% if current_user.breeds.exists?(id: favorite.id) %>
+            <% heart_class = "heart-icon-fav" %>
         <% end %>
-        <%= octicon "heart", :height => 32, :"aria-label" => "heart", :class => heart_class, :onclick => heart_on_click %>
+        <%= button_to "favorites#toggleFavorite", params: { breed_id: breed.id }, remote: true, :class => "heart-button"  do %>
+            <% octicon "heart", :height => 32, :"aria-label" => "heart", :class => heart_class, :onclick => "toggleHeart(this)" %>
+        <% end %>
     </div>
     </div>
   </div>
