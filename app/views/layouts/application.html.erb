@@ -25,7 +25,16 @@
       <li class="nav-item active">
         <a class="nav-link" href="/favorites">Favorites<span class="sr-only">(current)</span></a>
       </li>
+      <li>
+      <% if signed_in? %>
+  <%= current_user.email %>
+  <%= button_to "Sign out", sign_out_path, method: :delete, class: "nav-link" %>
+<% else %>
+  <%= link_to "Sign in", sign_in_path, class: "nav-link" %>
+<% end %>
+</li>
   </div>
+  </nav>
   </header>
   <body>
     <%= yield %>
