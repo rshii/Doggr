@@ -7,13 +7,15 @@ class BreedsController < ApplicationController
             response = HTTParty.get('https://dog.ceo/api/breeds/list/all')
             breeds = JSON.parse(response.body)["message"]
             breeds.each do |breed|
-                breed_data = Breed.new(breed_name: breed[0])
+                Breed.create(breed_name: breed[0].capitalize, breed_url: breed[0])
                 if !breed[1].empty?
                     breed[1].each do |sub_breed|
-                        breed_data.sub_breeds.build(sub_breed_name:sub_breed)
+                        Breed.create(
+                            breed_name: sub_breed.capitalize + " " + breed[0].capitalize,
+                            breed_url: breed[0] + "-" + sub_breed
+                        )
                     end
                 end
-                breed_data.save
             end
         end
         redirect_to breeds_url

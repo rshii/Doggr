@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2018_09_02_003704) do
 
   create_table "breeds", force: :cascade do |t|
     t.string "breed_name"
-    t.integer "sub_breeds_count", default: 0, null: false
+    t.string "breed_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,14 +24,6 @@ ActiveRecord::Schema.define(version: 2018_09_02_003704) do
     t.integer "breed_id", null: false
     t.index ["breed_id"], name: "index_breeds_users_on_breed_id"
     t.index ["user_id"], name: "index_breeds_users_on_user_id"
-  end
-
-  create_table "sub_breeds", force: :cascade do |t|
-    t.string "sub_breed_name"
-    t.integer "breed_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["breed_id"], name: "index_sub_breeds_on_breed_id"
   end
 
   create_table "tags", force: :cascade do |t|
