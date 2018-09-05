@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_09_02_003704) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "breeds", force: :cascade do |t|
     t.string "breed_name"
     t.string "breed_url"
@@ -20,18 +23,10 @@ ActiveRecord::Schema.define(version: 2018_09_02_003704) do
   end
 
   create_table "breeds_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "breed_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "breed_id", null: false
     t.index ["breed_id"], name: "index_breeds_users_on_breed_id"
     t.index ["user_id"], name: "index_breeds_users_on_user_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "title"
-    t.integer "breed_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["breed_id"], name: "index_tags_on_breed_id"
   end
 
   create_table "users", force: :cascade do |t|
